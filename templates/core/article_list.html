@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Article</h1>
+	<a href="{% url 'article_add' %}">New</a>
+	{% if article_list %}
+	<table border="1">
+  	<tr>
+    	<th>Article</th>
+    	<th></th>
+  	</tr>
+  	{% for article in article_list %}
+  	<tr>
+    	<td><a href="{{ article.title }}">{{ article.title }}</a></td>
+    	<td><a href="{% url 'article_delete' article.pk %}">Delete</a></td>
+  	</tr>
+  	{% endfor %}
+	</table>
+	{% else %}
+  	<p>There are no articles.</p>
+	{% endif %}  	 
+{% endblock %}
